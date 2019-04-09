@@ -1,0 +1,68 @@
+{
+	"name": "gitea-vscode",
+	"displayName": "Gitea-VSCode",
+	"description": "Gitea Issue Tracker for vs-code",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:open-issues"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "issue-explorer",
+					"title": "Gitea-Issues",
+					"icon": "media/issue.svg"
+				}
+			]
+		},
+		"views": {
+			"issue-explorer": [
+				{
+					"id": "open-issues",
+					"name": "Open Issues"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "giteaIssues.openIssue",
+				"title": "Show"
+			}
+		],
+		"menus": {
+			"view/item/context": [
+				{
+					"command": "giteaIssues.openIssue",
+					"group": "inline",
+					"when": "view == open-issues && viewItem == issue"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/axios": "^0.14.0",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"axios": "^0.18.0"
+	}
+}
