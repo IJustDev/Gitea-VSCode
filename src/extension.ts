@@ -1,8 +1,8 @@
+import { html } from './template.html';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { IssueProvider, Issue } from './issueProvider';
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -11,13 +11,14 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	vscode.window.registerTreeDataProvider('open-issues', issueProvider);
 	vscode.commands.registerCommand('giteaIssues.openIssue', (issue: Issue) => {
-		const panel = vscode.window.createWebviewPanel('issue', 'Issue #1',
+		const panel = vscode.window.createWebviewPanel('issue', issue.label,
 			vscode.ViewColumn.Active,
 			{});
-		panel.webview.html = "<h1>Issue #" + issue.issueId + "!</h1>";
-		panel.webview.html += "<p>Status: " + issue.issueState + "</p>";
-		panel.webview.html += "<p>Assignees: " + issue.assignees + "</p>";
-		panel.webview.html += "<p>" + issue.body + "</p>";
+		// panel.webview.html = "<h1>Issue #" + issue.issueId + "!</h1>";
+		// panel.webview.html += "<p>Status: " + issue.issueState + "</p>";
+		// panel.webview.html += "<p>Assignees: " + issue.assignee + "</p>";
+		// panel.webview.html += "<p>" + issue.body + "</p>";
+		panel.webview.html = html(issue);
 	});
 
 	// The command has been defined in the package.json file
