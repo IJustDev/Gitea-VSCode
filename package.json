@@ -78,5 +78,9 @@
 	"dependencies": {
 		"axios": "^0.18.0",
 		"configparser": "^0.2.6"
+	},
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/IJustdev/Gitea-VSCode.git"
 	}
 }
