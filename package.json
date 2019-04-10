@@ -3,7 +3,7 @@
 	"displayName": "Gitea-VSCode",
 	"description": "Gitea Issue Tracker for vs-code",
 	"publisher": "IJustDev",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.32.0"
 	},
@@ -36,14 +36,26 @@
 			{
 				"command": "giteaIssues.openIssue",
 				"title": "Show"
+			},
+			{
+				"command": "giteaIssues.refreshIssues",
+				"title": "Refresh",
+				"icon": {
+					"dark": "resources/dark/refresh.svg",
+					"light": "resources/light/refresh.svg"
+				}
+			},
+			{
+				"command": "giteaIssues.initRepo",
+				"title": "Initialize Gitea-Issue Tracker"
 			}
 		],
 		"menus": {
-			"view/item/context": [
+			"view/title": [
 				{
-					"command": "giteaIssues.openIssue",
-					"group": "inline",
-					"when": "view == open-issues && viewItem == issue"
+					"command": "giteaIssues.refreshIssues",
+					"group": "navigation",
+					"when": "view == open-issues"
 				}
 			]
 		}
@@ -64,6 +76,7 @@
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
-		"axios": "^0.18.0"
+		"axios": "^0.18.0",
+		"configparser": "^0.2.6"
 	}
 }
