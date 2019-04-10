@@ -12,6 +12,18 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Removed:
 - Interval for updating
 
+## [0.0.3] - 2019-04-10
+### Added:
+- Implemented [Create issue icon](./resources/dark/create.svg)
+- Interval for updating (Issuelist now gets updated every ten minutes)
+- Closed Issues View
+- SSL server support
+- License
+### Refactored:
+- [IssueProvider](./src/issueProvider.ts) splitted up in two parts: OpenIssuesProvider and ClosedIssuesProvider
+- class Issue is now in [issue.ts](./src/issue.ts)
+- organizing imports
+- renaming
 ## [Unreleased]
 
 - Initial release

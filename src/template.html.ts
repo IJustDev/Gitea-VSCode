@@ -1,6 +1,6 @@
-import { Issue } from "./issueProvider";
+import { Issue } from "./issue";
 
-export function html(issue: Issue) {
+export function showIssueHTML(issue: Issue) {
 
     return `<body>
     <h1>{{label}}</h1>
