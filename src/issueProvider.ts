@@ -1,6 +1,8 @@
 import axios from "axios";
 import * as vscode from "vscode";
 
+// const MarkdownIt = require('markdown-it'), md = new MarkdownIt();
+const marked = require("marked");
 import { Issue } from "./issue";
 import { RepositoryInformationManager } from "./configurationProvider";
 
@@ -50,7 +52,7 @@ export class OpenIssuesProvider implements vscode.TreeDataProvider<Issue> {
                         continue;
                     }
                     const title = issue["title"];
-                    const body = issue["body"];
+                    const body = marked(issue["body"]);
                     const state = issue["state"];
                     const assignee = issue["assignee"] === null ? "None" : issue["assignee"]["username"];
                     const tmpIssue = new Issue("#" + id + " - " + title, id, body, state, assignee, "Frontend", vscode.TreeItemCollapsibleState.None);
@@ -121,7 +123,7 @@ export class ClosedIssuesProvider implements vscode.TreeDataProvider<Issue> {
                         continue;
                     }
                     const title = issue["title"];
-                    const body = issue["body"];
+                    const body = marked(issue["body"]);
                     const state = issue["state"];
                     const assignee = issue["assignee"] === null ? "None" : issue["assignee"]["username"];
                     const tmpIssue = new Issue("#" + id + " - " + title, id, body, state, assignee, "Frontend", vscode.TreeItemCollapsibleState.None);

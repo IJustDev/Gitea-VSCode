@@ -29,15 +29,10 @@ export function showIssueHTML(issue: Issue) {
             {{assignee}}
             </td>
             </tr>
-            <tr>
-            <td>
-            Description
-            </td>
-            <td>
-            {{description}}
-            </td>
-            </tr>
             </table>
+            <p style="font-size: 20pt">
+            {{description}}
+            </p>
             </body>
 `.replace("{{label}}", issue.label).replace("{{state}}", issue.issueState).replace("{{assignee}}", issue.assignee).replace("{{description}}", issue.body).replace("{{label}}", issue.label);
 }

@@ -3,7 +3,7 @@
 	"displayName": "Gitea-VSCode",
 	"description": "Gitea Issue Tracker for vs-code",
 	"publisher": "IJustDev",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.32.0"
 	},
@@ -83,7 +83,8 @@
 	},
 	"dependencies": {
 		"axios": "^0.18.0",
-		"configparser": "^0.3.6"
+		"configparser": "^0.3.6",
+		"marked": "^0.6.2"
 	},
 	"repository": {
 		"type": "github",

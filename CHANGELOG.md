@@ -24,6 +24,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - class Issue is now in [issue.ts](./src/issue.ts)
 - organizing imports
 - renaming
+
+## [0.0.4] - 2019-04-11
+### Fixed:
+- [Issue 1][#1] - `\n` is now represented as ´<br/>´-tag
+- [Issue 2][#2] - Markdown is now represented as HTML
 ## [Unreleased]
 
 - Initial release
+
+[#1](https://github.com/IJustDev/Gitea-VSCode/issues/1)
+[#2](https://github.com/IJustDev/Gitea-VSCode/issues/2)
