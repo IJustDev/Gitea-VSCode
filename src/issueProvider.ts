@@ -40,6 +40,10 @@ export class OpenIssuesProvider implements vscode.TreeDataProvider<Issue> {
         for (let i = 0; i !== 10; i++) {
             await axios.get(repoUri + "?page=" + i, { headers: { Authorization: "token " + token } }).then(res => {
                 console.log(res.data);
+                if (res.data.length === 0) {
+                    stop = true;
+                    return;
+                }
                 parseToIssues(res, this.issueList);
             }).catch((err) => {
                 console.log(err);
@@ -89,6 +93,11 @@ export class ClosedIssuesProvider implements vscode.TreeDataProvider<Issue> {
         let stop = false;
         for (let i = 0; i !== 10; i++) {
             await axios.get(repoUri + "?state=closed&page=" + i, { headers: { Authorization: "token " + token } }).then(res => {
+                console.log(res.data);
+                if (res.data.length === 0) {
+                    stop = true;
+                    return;
+                }
                 parseToIssues(res, this.issueList);
             }).catch(() => {
                 stop = true; vscode.window.showErrorMessage("Can't fetch issues; HTTP Error!");
