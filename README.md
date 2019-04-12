@@ -4,7 +4,7 @@ Issuetracker for Gitea
 
 ## Getting Started
 
-To setup a gitea issue tracked project you need to first select the issues tab at the activitiy bar. After that open the command palette in order to enter your crendentials:
+To setup a gitea issue tracked project you need to first select the issues tab at the activitiy bar. After that open the command palette in order to type in the command `Initialize Gitea-Issue Tracker` and enter your crendentials:
 - Authtoken
 - Domain in format: "example.com"
 - Repository Owner (may be an organisation): "TestOrganisation"

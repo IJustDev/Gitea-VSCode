@@ -9,6 +9,7 @@ export class Issue extends vscode.TreeItem {
         public body: string,
         public issueState: string,
         public assignee: string,
+        public creator: string,
         public labels: any[],
         public collapsibleState: vscode.TreeItemCollapsibleState,
         public readonly command?: vscode.Command) {

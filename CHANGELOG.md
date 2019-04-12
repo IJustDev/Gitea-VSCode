@@ -41,9 +41,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Added:
 - Label dependent icons now allow the user to use the colors from the Gitea server
 
+
 ## [Unreleased]
 
 - Initial release
+
+### [0.0.6] / [0.0.7]
+- From" Property of issue now displays the creater of an issue
+
+
 
 [#1](https://github.com/IJustDev/Gitea-VSCode/issues/1)
 [#2](https://github.com/IJustDev/Gitea-VSCode/issues/2)

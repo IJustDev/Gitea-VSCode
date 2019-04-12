@@ -119,12 +119,9 @@ export function getChildren(element: Issue | undefined, issueList: Issue[]) {
             let childItems: vscode.TreeItem[] = [
                 new vscode.TreeItem("Assignee - " + element.assignee, vscode.TreeItemCollapsibleState.None),
                 new vscode.TreeItem("State - " + element.issueState, vscode.TreeItemCollapsibleState.None),
-                new vscode.TreeItem("ID - " + element.issueId, vscode.TreeItemCollapsibleState.None)
+                new vscode.TreeItem("ID - " + element.issueId, vscode.TreeItemCollapsibleState.None),
+                new vscode.TreeItem("From - " + element.creator, vscode.TreeItemCollapsibleState.None)
             ];
-            for (let i = 0; i != element.labels.length; i++) {
-                const label = element.labels[i];
-                childItems.push(new vscode.TreeItem(label.name, vscode.TreeItemCollapsibleState.None));
-            }
             return Promise.resolve(childItems);
 
         }
@@ -149,9 +146,10 @@ export function parseToIssues(res: any, issueList: any[], collapsibleState: vsco
         const state = issue["state"];
         const assignee = issue["assignee"] === null ? "None" : issue["assignee"]["username"];
         const labels = issue["labels"];
-        const tmpIssue = new Issue("#" + id + " - " + title, id, body, state, assignee, labels, collapsibleState);
+        const creator = issue["user"]["username"];
+        const tmpIssue = new Issue("#" + id + " - " + title, id, body, state, assignee, creator, labels, collapsibleState);
         const issueForList = new Issue(tmpIssue.label, tmpIssue.issueId, tmpIssue.body, tmpIssue.issueState,
-            tmpIssue.assignee, tmpIssue.labels, tmpIssue.collapsibleState, {
+            tmpIssue.assignee, tmpIssue.creator, tmpIssue.labels, tmpIssue.collapsibleState, {
                 command: 'giteaIssues.openIssue',
                 title: '',
                 arguments: [tmpIssue],
