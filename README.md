@@ -16,7 +16,7 @@ When you've finished you can press the refresh button in the open issues section
 
 ![Issues with multiple colors](./media/gitea-issues.png)
 
-In order to get nice looking issueicons in multiple colors you need to assigne any issue a label called either "feature" or "bug". A bug is going to be represented as an red issue, while a feature will have a green icon. If the issue does not have got a label it will receive a grey icon. If the label is not know (so neither "feature" nor "bug" not case sensitive) it will also get a grey icon.
+In order to get nice looking issue icons in multiple colors (of your choice) you just need to assign a label to your issue. The color is being fetched automatically. If you change the color of the label however, you need to delete the `.gitea/{issuename}.svg` file in the given folder. If you skip this step, the file is not going to get updated. In most cases you need to restart visual studio code to apply the icons in the issues tab.
 ## Future
 - Implement a `Close Issue` Button
 - Create Issues via Webview
