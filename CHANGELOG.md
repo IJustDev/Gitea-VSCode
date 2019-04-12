@@ -33,10 +33,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.5] - 2019-04-12
 ### Added:
 - Child items to root items. Collapsable item now shows assignee, state, id and list all labels from the issue
-- Label dependent icons (Automatically fetch colors)
+- Label dependent icons
 ### Refactored:
 - Created two methods that are used in both classes (the closed and the open issues provider)
 
+## [0.0.6] - 2019-04-12
+### Added:
+- Label dependent icons now allow the user to use the colors from the Gitea server
 
 ## [Unreleased]
 
