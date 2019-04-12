@@ -29,6 +29,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Fixed:
 - [Issue 1][#1] - `\n` is now represented as ´<br/>´-tag
 - [Issue 2][#2] - Markdown is now represented as HTML
+
+## [0.0.5] - 2019-04-12
+### Added:
+- Child items to root items. Collapsable item now shows assignee, state, id and list all labels from the issue
+### Refactored:
+- Created two methods that are used in both classes (the closed and the open issues provider)
+
+
 ## [Unreleased]
 
 - Initial release

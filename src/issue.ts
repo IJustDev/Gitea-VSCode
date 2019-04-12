@@ -7,8 +7,8 @@ export class Issue extends vscode.TreeItem {
         public body: string,
         public issueState: string,
         public assignee: string,
-        public firstlabel: string,
-        public readonly collapsibleState: vscode.TreeItemCollapsibleState,
+        public labels: any[],
+        public collapsibleState: vscode.TreeItemCollapsibleState,
         public readonly command?: vscode.Command) {
         super(label, collapsibleState);
     }
