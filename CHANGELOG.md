@@ -33,6 +33,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.5] - 2019-04-12
 ### Added:
 - Child items to root items. Collapsable item now shows assignee, state, id and list all labels from the issue
+- Label dependent icons
 ### Refactored:
 - Created two methods that are used in both classes (the closed and the open issues provider)
 
