@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
         initializeIssueTracker();
     });
     context.subscriptions.push(disposable);
-
+    let openIssues: Array<Issue> = [];
     const openIssuesProvider = new OpenIssuesProvider();
     const closedIssuesProvider = new ClosedIssuesProvider();
 
@@ -24,10 +24,25 @@ export function activate(context: vscode.ExtensionContext) {
     // });
 
     vscode.commands.registerCommand('giteaIssues.openIssue', (issue: Issue) => {
+        for (let i = 0; i !== openIssues.length; i++) {
+            let openIssue = openIssues[i];
+            if (openIssue.issueId === issue.issueId) {
+                return;
+            }
+        }
         const panel = vscode.window.createWebviewPanel('issue', issue.label,
             vscode.ViewColumn.Active,
             {});
         panel.webview.html = showIssueHTML(issue);
+        openIssues.push(issue);
+        panel.onDidDispose(event => {
+            for (let i = 0; i !== openIssues.length; i++) {
+                let openIssue = openIssues[i];
+                if (openIssue.issueId === issue.issueId) {
+                    openIssues.splice(openIssues.indexOf(issue), 1);
+                }
+            }
+        });
     });
 
     vscode.commands.registerCommand('giteaIssues.refreshIssues', () => {

@@ -34,12 +34,9 @@ export class Issue extends vscode.TreeItem {
     }
 
     labelDependentIcon(dark: boolean = false): string {
-        let filename = "";
         if (this.labels.length === 0) {
-            filename = "issue";
             return path.join(__filename, '..', '..', 'media', 'issue.svg');
         } else {
-            filename = this.labels[0].name;
             return path.join(vscode.workspace.rootPath as string, '.gitea', 'label_pictures', this.labels[0].name + ".svg");
         }
     }

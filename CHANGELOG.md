@@ -41,6 +41,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Added:
 - Label dependent icons now allow the user to use the colors from the Gitea server
 
+## [0.0.7] - 2019-06-14
+### Added:
+- Every issue can now be opened just once at a time
+### Refactored:
+- Removed "filename" from `issue.ts` `labelDependentIcon()`
+
 
 ## [Unreleased]
 
