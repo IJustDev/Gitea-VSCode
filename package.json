@@ -82,7 +82,7 @@
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
-		"axios": "^0.18.0",
+		"axios": "^0.18.1",
 		"configparser": "^0.3.6",
 		"marked": "^0.6.2"
 	},
