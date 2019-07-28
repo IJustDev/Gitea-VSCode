@@ -1,128 +1,124 @@
 {
-  "name": "gitea-vscode",
-  "displayName": "Gitea-VSCode",
-  "description": "Gitea Issue Tracker for vs-code",
-  "publisher": "IJustDev",
-  "version": "0.0.7",
-  "engines": {
-    "vscode": "^1.32.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onView:open-issues",
-    "onCommand:giteaIssues.initRepo",
-    "onCommand:giteaIssues.refreshIssues"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "issue-explorer",
-          "title": "Gitea-Issues",
-          "icon": "media/issue.svg"
-        }
-      ]
+    "name": "gitea-vscode",
+    "displayName": "Gitea-VSCode",
+    "description": "Gitea Issue Tracker for vs-code",
+    "publisher": "IJustDev",
+    "version": "0.0.7",
+    "engines": {
+        "vscode": "^1.32.0"
     },
-    "views": {
-      "issue-explorer": [
-        {
-          "id": "open-issues",
-          "name": "Open Issues"
-        },
-        {
-          "id": "closed-issues",
-          "name": "Closed Issues"
-        }
-      ]
-    },
-    "commands": [
-      {
-        "command": "giteaIssues.openIssue",
-        "title": "Show"
-      },
-      {
-        "command": "giteaIssues.refreshIssues",
-        "title": "Refresh",
-        "icon": {
-          "dark": "resources/dark/refresh.svg",
-          "light": "resources/light/refresh.svg"
-        }
-      },
-      {
-        "command": "giteaIssues.initRepo",
-        "title": "Initialize Gitea-Issue Tracker"
-      }
+    "categories": [
+        "Other"
     ],
-    "menus": {
-      "view/title": [
-        {
-          "command": "giteaIssues.refreshIssues",
-          "group": "navigation",
-          "when": "view == open-issues"
+    "activationEvents": [
+        "onView:open-issues",
+        "onCommand:giteaIssues.initRepo",
+        "onCommand:giteaIssues.refreshIssues"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "issue-explorer",
+                    "title": "Gitea-Issues",
+                    "icon": "media/issue.svg"
+                }
+            ]
+        },
+        "views": {
+            "issue-explorer": [
+                {
+                    "id": "open-issues",
+                    "name": "Open Issues"
+                },
+                {
+                    "id": "closed-issues",
+                    "name": "Closed Issues"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "giteaIssues.openIssue",
+                "title": "Show"
+            },
+            {
+                "command": "giteaIssues.refreshIssues",
+                "title": "Refresh",
+                "icon": {
+                    "dark": "resources/dark/refresh.svg",
+                    "light": "resources/light/refresh.svg"
+                }
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "giteaIssues.refreshIssues",
+                    "group": "navigation",
+                    "when": "view == open-issues"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Gitea",
+            "properties": {
+                "gitea.token": {
+                    "scope": "application",
+                    "type": "string",
+                    "default": "",
+                    "description": "The token for the gitea server."
+                },
+                "gitea.domain": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "description": "The remote gitea instance's domain."
+                },
+                "gitea.owner": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "description": "The username for the repository."
+                },
+                "gitea.repo": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "description": "The repository name."
+                },
+                "gitea.ssl": {
+                    "scope": "resource",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If https should be used or not."
+                }
+            }
         }
-      ]
     },
-    "configuration": {
-      "title": "Gitea",
-      "properties": {
-        "gitea.token": {
-          "scope": "application",
-          "type": "string",
-          "default": "",
-          "description": "The token for the gitea server."
-        },
-        "gitea.domain": {
-          "scope": "resource",
-          "type": "string",
-          "default": "",
-          "description": "The remote gitea instance's domain."
-        },
-        "gitea.owner": {
-          "scope": "resource",
-          "type": "string",
-          "default": "",
-          "description": "The username for the repository."
-        },
-        "gitea.repo": {
-          "scope": "resource",
-          "type": "string",
-          "default": "",
-          "description": "The repository name."
-        },
-        "gitea.ssl": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "description": "If https should be used or not."
-        }
-      }
-    }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/mocha": "^2.2.42",
-    "@types/node": "^10.12.21",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.1",
-    "vscode": "^1.1.28"
-  },
-  "dependencies": {
-    "axios": "^0.18.1",
-    "marked": "^0.6.2"
-  },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/IJustdev/Gitea-VSCode.git"
-  },
-  "license": "MIT"
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/axios": "^0.14.0",
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^10.12.21",
+        "tslint": "^5.12.1",
+        "typescript": "^3.3.1",
+        "vscode": "^1.1.28"
+    },
+    "dependencies": {
+        "axios": "^0.18.1",
+        "marked": "^0.6.2"
+    },
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/IJustdev/Gitea-VSCode.git"
+    },
+    "license": "MIT"
 }
