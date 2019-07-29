@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to the "gitea-vscode" extension will be documented in this file.
 
@@ -27,8 +27,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.0.4] - 2019-04-11
 ### Fixed:
-- [Issue 1][#1] - `\n` is now represented as ´<br/>´-tag
-- [Issue 2][#2] - Markdown is now represented as HTML
+- [Issue 1][1] - `\n` is now represented as ´<br/>´-tag
+- [Issue 2][2] - Markdown is now represented as HTML
 
 ## [0.0.5] - 2019-04-12
 ### Added:
@@ -44,18 +44,26 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.7] - 2019-06-14
 ### Added:
 - Every issue can now be opened just once at a time
+- Repo settings moved to workspace settings
+- Token setting moved to user settings
 ### Refactored:
 - Removed "filename" from `issue.ts` `labelDependentIcon()`
+- Cleaning files up
+
+## [0.0.8] - 2019-07-29
+### Added:
+- Icon for marketplace
+- ReadMe Icon and styling
+### Removed:
+- InitRepo Command
+### Refactored:
+- Changelog
 
 
 ## [Unreleased]
 
 - Initial release
 
-### [0.0.6] / [0.0.7]
-- From" Property of issue now displays the creater of an issue
 
-
-
-[#1](https://github.com/IJustDev/Gitea-VSCode/issues/1)
-[#2](https://github.com/IJustDev/Gitea-VSCode/issues/2)
+[1]: https://github.com/IJustDev/Gitea-VSCode/issues/1
+[2]: https://github.com/IJustDev/Gitea-VSCode/issues/2

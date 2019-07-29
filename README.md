@@ -1,6 +1,16 @@
-# Gitea-VSCode
+<div id="vscodium-logo" align="center">
+    <br />
+    <img src="./resources/icon-highres.png" alt="VSCodium Logo" width="200"/>
+    <h1>Gitea-VSCode</h1>
+    <h3>Issuetracker for Gitea</h3>
+</div>
 
-Issuetracker for Gitea
+<div id="badges" align="center">
+
+![version-badge][version-badge]
+![GitHub](https://img.shields.io/github/license/ijustdev/gitea-vscode)
+
+</div>
 
 ## Getting Started
 
@@ -29,3 +39,6 @@ In order to get nice looking issue icons in multiple colors (of your choice) you
 - Implement a `Close Issue` Button
 - Create Issues via Webview
 - `Comment` Issues
+
+[logo]: resources/icon.png
+[version-badge]: https://img.shields.io/visual-studio-marketplace/v/ijustdev.gitea-vscode

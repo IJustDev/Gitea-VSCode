@@ -3,7 +3,7 @@
     "displayName": "Gitea-VSCode",
     "description": "Gitea Issue Tracker for vs-code",
     "publisher": "IJustDev",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "engines": {
         "vscode": "^1.32.0"
     },
@@ -16,6 +16,7 @@
         "onCommand:giteaIssues.refreshIssues"
     ],
     "main": "./out/extension.js",
+    "icon": "./resources/icon.png",
     "contributes": {
         "viewsContainers": {
             "activitybar": [
