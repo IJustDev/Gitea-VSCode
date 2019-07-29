@@ -16,7 +16,7 @@
         "onCommand:giteaIssues.refreshIssues"
     ],
     "main": "./out/extension.js",
-    "icon": "./resources/icon.png",
+    "icon": "resources/icon.png",
     "contributes": {
         "viewsContainers": {
             "activitybar": [

@@ -1,6 +1,6 @@
 <div id="vscodium-logo" align="center">
     <br />
-    <img src="./resources/icon-highres.png" alt="VSCodium Logo" width="200"/>
+    <img src="https://github.com/IJustDev/Gitea-VSCode/raw/master/resources/icon-highres.png" alt="VSCodium Logo" width="200"/>
     <h1>Gitea-VSCode</h1>
     <h3>Issuetracker for Gitea</h3>
 </div>
