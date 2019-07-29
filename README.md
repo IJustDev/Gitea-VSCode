@@ -7,8 +7,9 @@
 
 <div id="badges" align="center">
 
-![version-badge][version-badge]
 ![GitHub](https://img.shields.io/github/license/ijustdev/gitea-vscode)
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/ijustdev.gitea-vscode)
+![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/ijustdev.gitea-vscode)
 
 </div>
 
@@ -41,4 +42,3 @@ In order to get nice looking issue icons in multiple colors (of your choice) you
 - `Comment` Issues
 
 [logo]: resources/icon.png
-[version-badge]: https://img.shields.io/visual-studio-marketplace/v/ijustdev.gitea-vscode
