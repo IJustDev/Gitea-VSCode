@@ -120,10 +120,10 @@ export function getChildren(element: Issue | undefined, issueList: Issue[]) {
   for (const issue of issueList) {
     if (element === issue) {
       let childItems: vscode.TreeItem[] = [
-        new vscode.TreeItem('Assignee - ' + element.assignee, vscode.TreeItemCollapsibleState.None),
-        new vscode.TreeItem('State - ' + element.issueState, vscode.TreeItemCollapsibleState.None),
-        new vscode.TreeItem('ID - ' + element.issueId, vscode.TreeItemCollapsibleState.None),
-        new vscode.TreeItem('From - ' + element.creator, vscode.TreeItemCollapsibleState.None),
+        new vscode.TreeItem('👷 Assignee - ' + element.assignee, vscode.TreeItemCollapsibleState.None),
+        new vscode.TreeItem('🚥 State - ' + element.issueState, vscode.TreeItemCollapsibleState.None),
+        new vscode.TreeItem('🆔 ID - ' + element.issueId, vscode.TreeItemCollapsibleState.None),
+        new vscode.TreeItem('✏️ From - ' + element.creator, vscode.TreeItemCollapsibleState.None),
       ];
       return Promise.resolve(childItems);
     }

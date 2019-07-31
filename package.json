@@ -3,7 +3,7 @@
     "displayName": "Gitea-VSCode",
     "description": "Gitea Issue Tracker for vs-code",
     "publisher": "IJustDev",
-    "version": "0.0.9",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.32.0"
     },

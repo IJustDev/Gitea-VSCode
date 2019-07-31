@@ -64,6 +64,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Multiple gitea instances are now possible. The key is now stored in the workspace settings
 - BuyMeACoffeBadge ReadMe
 
+## [1.0.0] - 2019-07-31
+### Added:
+- Emojis in treeview
 
 ## [Unreleased]
 
