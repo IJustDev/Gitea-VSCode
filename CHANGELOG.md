@@ -59,6 +59,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Refactored:
 - Changelog
 
+## [0.0.9] - 2019-07-31
+### Added:
+- Multiple gitea instances are now possible. The key is now stored in the workspace settings
+- BuyMeACoffeBadge ReadMe
+
 
 ## [Unreleased]
 

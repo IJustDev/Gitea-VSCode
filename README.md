@@ -21,7 +21,7 @@
 Go to your settings, and find the `Gitea` section, and fill out the details.
 
 Please make sure to not to make your authtoken public, as it can be used to act on your behalf.
-You can store it in the user settings, whilst leaving the rest in the workspace settings.
+Also do not push the .vscode folder to your repository and doublecheck this part. It contains your gitea server instance key.
 
 ### The following details are needed
 
