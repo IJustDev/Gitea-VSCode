@@ -3,7 +3,7 @@
     "displayName": "Gitea-VSCode",
     "description": "Gitea Issue Tracker for vs-code",
     "publisher": "IJustDev",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "engines": {
         "vscode": "^1.32.0"
     },
@@ -76,6 +76,12 @@
                     "type": "string",
                     "default": "",
                     "description": "The remote gitea instance's domain."
+                },
+                "gitea.port": {
+                    "scope": "resource",
+                    "type": "number",
+                    "default": 80,
+                    "description": "The remote gitea instance's port."
                 },
                 "gitea.owner": {
                     "scope": "resource",

@@ -26,9 +26,10 @@ Also do not push the .vscode folder to your repository and doublecheck this part
 ### The following details are needed
 
 - Authtoken
+- Port (either 80 or 443) in case that you use docker please enter the exposed port
 - Domain in format: "example.com"
-- Repository Owner (may be an organisation): "TestOrganisation"
-- Repository Name "ExampleRepository"
+- Repository owner (may be an organisation): "TestOrganisation"
+- Repository name "ExampleRepository"
 
 When you've finished you can press the refresh button in the open issues section and you'll see the issues of the first 10 pages (only open issues).
 

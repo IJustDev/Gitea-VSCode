@@ -3,6 +3,7 @@ import { workspace, window } from 'vscode';
 interface ConfigStorage {
   token: string;
   domain: string;
+  port: number;
   owner: string;
   repo: string;
   ssl: boolean;
@@ -50,6 +51,14 @@ export class Config implements ConfigTypes {
   public set domain(value) {
     this.storage.update('domain', value);
   }
+  
+  public get port() {
+    return this.loadConfigValue('port', 'number');
+  }
+
+  public set port(value) {
+    this.storage.update('port', value);
+  }
 
   public get owner() {
     return this.loadConfigValue('owner', 'string');
@@ -76,7 +85,9 @@ export class Config implements ConfigTypes {
   }
 
   public get repoApiUrl() {
-    const prefix = this.ssl ? 'https' : 'http';
-    return prefix + '://' + this.domain + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
+    if (this.ssl || this.port === 443) {
+        return 'https://' + this.domain + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
+    }
+    return 'http://' + this.domain + ':' + this.port + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
   }
 }
