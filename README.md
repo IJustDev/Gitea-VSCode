@@ -10,6 +10,7 @@
 ![GitHub](https://img.shields.io/github/license/ijustdev/gitea-vscode)
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/ijustdev.gitea-vscode)
 ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/ijustdev.gitea-vscode)
+[![Gitter](https://badges.gitter.im/Gitea-VSCode/community.svg)](https://gitter.im/Gitea-VSCode/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 </div>
 
