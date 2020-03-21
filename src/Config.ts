@@ -2,11 +2,9 @@ import { workspace, window } from 'vscode';
 
 interface ConfigStorage {
   token: string;
-  domain: string;
-  port: number;
+  instanceURL: string;
   owner: string;
   repo: string;
-  ssl: boolean;
 }
 
 export interface ConfigTypes extends ConfigStorage {
@@ -44,20 +42,12 @@ export class Config implements ConfigTypes {
     this.storage.update('token', value);
   }
 
-  public get domain() {
-    return this.loadConfigValue('domain', 'string');
+  public set instanceUrl(value: string) {
+    this.storage.update('instanceURL', value);
   }
 
-  public set domain(value) {
-    this.storage.update('domain', value);
-  }
-  
-  public get port() {
-    return this.loadConfigValue('port', 'number');
-  }
-
-  public set port(value) {
-    this.storage.update('port', value);
+  public get instanceURL(): any {
+    return this.loadConfigValue('instanceURL', 'string');
   }
 
   public get owner() {
@@ -75,19 +65,8 @@ export class Config implements ConfigTypes {
   public set repo(value) {
     this.storage.update('repo', value);
   }
-
-  public get ssl() {
-    return this.loadConfigValue('ssl', 'boolean', true);
-  }
-
-  public set ssl(value) {
-    this.storage.update('ssl', value);
-  }
-
+  
   public get repoApiUrl() {
-    if (this.ssl || this.port === 443) {
-        return 'https://' + this.domain + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
-    }
-    return 'http://' + this.domain + ':' + this.port + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
+    return this.instanceURL + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
   }
 }
