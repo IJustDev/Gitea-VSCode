@@ -40,7 +40,6 @@ export class OpenIssuesProvider implements vscode.TreeDataProvider<Issue> {
       await axios
         .get(repoUri + '?page=' + i, { headers: { Authorization: 'token ' + token } })
         .then((res) => {
-          console.log(res.data);
           if (res.data.length === 0) {
             stop = true;
             return;
@@ -48,9 +47,8 @@ export class OpenIssuesProvider implements vscode.TreeDataProvider<Issue> {
           parseToIssues(res, this.issueList);
         })
         .catch((err) => {
-          console.log(err);
           stop = true;
-          vscode.window.showErrorMessage("Can't fetch issues; HTTP Error!");
+          vscode.window.showErrorMessage("An error occoured. Please check your repository url: " + repoUri);
           return;
         });
       if (stop) {
@@ -103,7 +101,7 @@ export class ClosedIssuesProvider implements vscode.TreeDataProvider<Issue> {
         })
         .catch(() => {
           stop = true;
-          vscode.window.showErrorMessage("Can't fetch issues; HTTP Error!");
+          vscode.window.showErrorMessage("An error occoured. Please check your repository url: " + repoUri);
           return;
         });
       if (stop) {

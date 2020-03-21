@@ -71,17 +71,16 @@
                     "default": "",
                     "description": "The token for the gitea server."
                 },
-                "gitea.domain": {
+                "gitea.instanceURL": {
                     "scope": "resource",
                     "type": "string",
                     "default": "",
-                    "description": "The remote gitea instance's domain."
-                },
-                "gitea.port": {
-                    "scope": "resource",
-                    "type": "number",
-                    "default": 80,
-                    "description": "The remote gitea instance's port."
+                    "examples": [
+                        "http://example.com:3000",
+                        "https://gitea.com"
+                    ],
+                    "description": "The remote gitea instance's url. Should not end with a slash.",
+                    "pattern": "^(https|http)://"
                 },
                 "gitea.owner": {
                     "scope": "resource",
@@ -94,12 +93,6 @@
                     "type": "string",
                     "default": "",
                     "description": "The repository name."
-                },
-                "gitea.ssl": {
-                    "scope": "resource",
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If https should be used or not."
                 }
             }
         }
