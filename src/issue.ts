@@ -1,11 +1,5 @@
 import { Uri, TreeItem, TreeItemCollapsibleState, Command } from 'vscode';
-
-interface Label {
-  color: string;
-  id: number;
-  name: string;
-  url: string;
-}
+import { Label } from './giteaAPIUtils';
 
 export class Issue extends TreeItem {
   constructor(
