@@ -93,6 +93,12 @@
                     "type": "string",
                     "default": "",
                     "description": "The repository name."
+                },
+                "gitea.sslVerify": {
+                    "scope": "resource",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "true=Stop when cannot verify SSL certificate, false=Continue any way. Like git config 'sslVerify'."
                 }
             }
         }

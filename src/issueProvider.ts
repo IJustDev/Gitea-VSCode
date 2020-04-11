@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as vscode from 'vscode';
+import * as https from 'https';
 
 const marked = require('marked');
 import { Issue } from './issue';
@@ -36,9 +37,15 @@ export class OpenIssuesProvider implements vscode.TreeDataProvider<Issue> {
     const repoUri = config.repoApiUrl;
     const token = config.token;
     let stop = false;
+
+    const agent = new https.Agent({
+      // if true, stop when can't verify ssl
+      rejectUnauthorized: config.sslVerify,
+    });
+
     for (let i = 0; i !== 10; i++) {
       await axios
-        .get(repoUri + '?page=' + i, { headers: { Authorization: 'token ' + token } })
+        .get(repoUri + '?page=' + i, { headers: { Authorization: 'token ' + token }, httpsAgent: agent })
         .then((res) => {
           if (res.data.length === 0) {
             stop = true;
@@ -88,9 +95,15 @@ export class ClosedIssuesProvider implements vscode.TreeDataProvider<Issue> {
     const repoUri = config.repoApiUrl;
     const token = config.token;
     let stop = false;
+
+    const agent = new https.Agent({
+      // if true, stop when can't verify ssl
+      rejectUnauthorized: config.sslVerify,
+    });
+
     for (let i = 0; i !== 10; i++) {
       await axios
-        .get(repoUri + '?state=closed&page=' + i, { headers: { Authorization: 'token ' + token } })
+        .get(repoUri + '?state=closed&page=' + i, { headers: { Authorization: 'token ' + token } , httpsAgent: agent} )
         .then((res) => {
           console.log(res.data);
           if (res.data.length === 0) {
