@@ -5,6 +5,7 @@ interface ConfigStorage {
   instanceURL: string;
   owner: string;
   repo: string;
+  sslVerify: boolean;
 }
 
 export interface ConfigTypes extends ConfigStorage {
@@ -68,5 +69,12 @@ export class Config implements ConfigTypes {
   
   public get repoApiUrl() {
     return this.instanceURL + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
+  }
+
+  public set sslVerify(value){
+      this.storage.update('sslVerify', value);
+  }
+  public get sslVerify(){
+      return this.loadConfigValue('sslVerify', 'boolean')
   }
 }
