@@ -12,12 +12,12 @@ export class Issue extends TreeItem {
     public readonly label: string,
     public issueId: number,
     public body: string,
-    public issueState: string,
+    public state: string,
     public assignee: string,
     public creator: string,
     public labels: Label[],
     public collapsibleState: TreeItemCollapsibleState,
-    public readonly command?: Command
+    public command?: Command
   ) {
     super(label, collapsibleState);
   }

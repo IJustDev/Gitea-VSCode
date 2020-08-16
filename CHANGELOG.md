@@ -69,8 +69,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Emojis in treeview
 
 ## [Unreleased]
-
-- Initial release
+- Rework code base
 
 
 [1]: https://github.com/IJustDev/Gitea-VSCode/issues/1

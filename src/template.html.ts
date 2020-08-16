@@ -35,7 +35,7 @@ export function showIssueHTML(issue: Issue) {
     </body>
   `
     .replace('{{label}}', issue.label)
-    .replace('{{state}}', issue.issueState)
+    .replace('{{state}}', issue.state)
     .replace('{{assignee}}', issue.assignee)
     .replace('{{description}}', issue.body)
     .replace('{{label}}', issue.label);
