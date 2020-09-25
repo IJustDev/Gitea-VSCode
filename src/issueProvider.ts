@@ -31,7 +31,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
             const issuesOfPage = (await giteaConnector.getIssues(config.repoApiUrl, this.state, page)).data;
             issues.push(...issuesOfPage);
             issuesOfPage.forEach((c) => {
-                c.label = c.title;
+                c.label = `#${c.number} - ${c.title}`;
                 c.issueId = c.number;
                 c.assignee = c.assignee === null ? 'Nobody' : c.assignee;
                 c.creator = c.user.login;
