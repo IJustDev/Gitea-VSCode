@@ -54,10 +54,12 @@ Please refer to each project's style and [contribution guidelines](CONTRIBUTING.
 
 NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
-## Future
+## Roadmap
 
 - Implement a `Close Issue` Button
 - Create Issues via Webview
 - `Comment` Issues
+- Support multiple git servers
+
 
 [logo]: resources/icon.png
