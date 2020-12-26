@@ -68,10 +68,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Added:
 - Emojis in treeview
 
-## [Unreleased]
-- Rework code base
+## [1.0.1] - 2020-08-02
+### Added:
+- Port settings
+
+## [1.2.0] - 2020-12-26
+### Added:
 - feat: [#21][21]: introduce baseURL for Gitea instances.
 
+
+## [Unreleased]
 
 [1]: https://github.com/IJustDev/Gitea-VSCode/issues/1
 [2]: https://github.com/IJustDev/Gitea-VSCode/issues/2
