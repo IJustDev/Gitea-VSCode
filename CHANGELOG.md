@@ -70,7 +70,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 - Rework code base
+- feat: [#21][21]: introduce baseURL for Gitea instances.
 
 
 [1]: https://github.com/IJustDev/Gitea-VSCode/issues/1
 [2]: https://github.com/IJustDev/Gitea-VSCode/issues/2
+[21]: https://github.com/IJustDev/Gitea-VSCode/issues/21
