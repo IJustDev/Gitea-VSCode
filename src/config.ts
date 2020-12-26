@@ -89,6 +89,6 @@ export class Config implements ConfigTypes {
     }
 
     public get sslVerify() {
-        return this.loadConfigValue('sslVerify', 'boolean')
+        return this.loadConfigValue('sslVerify', 'boolean');
     }
 }
