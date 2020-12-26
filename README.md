@@ -31,6 +31,7 @@ Also do not push the .vscode folder to your repository and doublecheck this part
 
 - Authtoken
 - Port (either 80 or 443) in case that you use docker please enter the exposed port
+- BaseURL (default to "") in case you have your instance reachable on a suburl.
 - Domain in format: "example.com"
 - Repository owner (may be an organisation): "TestOrganisation"
 - Repository name "ExampleRepository"
