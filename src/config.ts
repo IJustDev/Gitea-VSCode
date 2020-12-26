@@ -6,6 +6,7 @@ interface ConfigStorage {
     owner: string;
     repo: string;
     sslVerify: boolean;
+    baseURL: string;
 }
 
 export interface ConfigTypes extends ConfigStorage {
@@ -51,6 +52,14 @@ export class Config implements ConfigTypes {
         return this.loadConfigValue('instanceURL', 'string');
     }
 
+    public get baseURL(): string {
+        return this.loadConfigValue('baseURL', 'string');
+    }
+
+    public set baseURL(value) {
+        this.storage.update('baseURL', 'string');
+    }
+
     public get owner() {
         return this.loadConfigValue('owner', 'string');
     }
@@ -67,8 +76,12 @@ export class Config implements ConfigTypes {
         this.storage.update('repo', value);
     }
 
-    public get repoApiUrl() {
-        return this.instanceURL.replace(/\/$/, "") + '/api/v1/repos/' + this.owner + '/' + this.repo + '/issues';
+    public get repoApiUrl(): string {
+        return this.instanceURL.replace(/\/$/, "") +
+            this.baseURL.replace(/\/$/, "") +
+            '/api/v1/repos/' +
+            this.owner +
+            '/' + this.repo + '/issues';
     }
 
     public set sslVerify(value) {

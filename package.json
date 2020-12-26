@@ -82,6 +82,16 @@
                     "description": "The remote gitea instance's url. Should not end with a slash.",
                     "pattern": "^(https|http)://"
                 },
+                "gitea.baseURL": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "examples": [
+                        "/gitea"
+                    ],
+                    "description": "The base url of the Gitea instance.",
+                    "pattern": ""
+                },
                 "gitea.owner": {
                     "scope": "resource",
                     "type": "string",
