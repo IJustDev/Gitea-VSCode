@@ -76,6 +76,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Added:
 - feat: [#21][21]: introduce baseURL for Gitea instances.
 
+## [1.2.1] - 2020-12-31
+### Added:
+- fix: [#21][21] missing '/'
 
 ## [Unreleased]
 
