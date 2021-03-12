@@ -77,8 +77,7 @@ export class Config implements ConfigTypes {
     }
 
     public get repoApiUrl(): string {
-        return this.instanceURL.replace(/\/$/, "") + "/" +
-            this.baseURL.replace(/\/$/, "") +
+        return this.instanceURL.replace(/\/$/, "") +
             '/api/v1/repos/' +
             this.owner +
             '/' + this.repo + '/issues';
