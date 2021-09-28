@@ -24,8 +24,23 @@ Gitea-VSCode is an Visual Studio Code extension that allows you to manage (curre
 
 Go to your settings, and find the `Gitea` section, and fill out the details.
 
-Please make sure to not to make your authtoken public, as it can be used to act on your behalf.
-Also do not push the .vscode folder to your repository and doublecheck this part. It contains your gitea server instance key.
+Please make sure not to make your authtoken public, as it can be used to act on your behalf.
+Keep instance key `"gitea.token"` in [user settings](https://vscode.readthedocs.io/en/latest/getstarted/settings/) other section keys keep in `.vscode/settings.json`.    
+Otherwise do not push the .vscode folder to your repository and doublecheck this part. It contains your gitea server instance key.
+
+### Config example
+
+- go to `https://%YOUR_GITEA_SERVER/user/settings/applications` and `Generate Token`
+- fill `,"gitea.token": "%YOUR_KEY%"` in VS code user settings in following locations:
+   - Win %APPDATA%\Code\User\settings.json
+   - Mac $HOME/Library/Application Support/Code/User/settings.json
+   - Linux $HOME/.config/Code/User/settings.json
+- fill in `.vscode/settings.json` 
+```
+    , "gitea.instanceURL": "%YOUR_GITEA_SERVER%"
+    , "gitea.owner": "%OWNER%"
+    , "gitea.repo": "%REPO_NAME%"
+```
 
 ### The following details are needed
 
