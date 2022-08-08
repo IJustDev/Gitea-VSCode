@@ -37,7 +37,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
                 c.creator = c.user.login;
             });
             page++;
-            if (issues.length < 10) {
+            if (issuesOfPage.length < 10) {
                 break;
             }
         }
