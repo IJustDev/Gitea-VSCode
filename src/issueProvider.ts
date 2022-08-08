@@ -26,7 +26,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
         const giteaConnector = new GiteaConnector(config.token, config.sslVerify);
 
         const issues = [];
-        let page = 0;
+        let page = 1;
         while (page < 11) {
             const issuesOfPage = (await giteaConnector.getIssues(config.repoApiUrl, this.state, page)).data;
             issues.push(...issuesOfPage);
