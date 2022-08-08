@@ -5,9 +5,9 @@ import { Config } from './config';
 import { GiteaConnector } from './giteaConnector';
 
 export class IssueProvider implements vscode.TreeDataProvider<Issue> {
-    private _onDidChangeTreeData: vscode.EventEmitter<Issue | undefined> = new vscode.EventEmitter<Issue | undefined>();
+    private _onDidChangeTreeData: vscode.EventEmitter<Issue | undefined | null | void> = new vscode.EventEmitter<Issue | undefined | null | void>();
 
-    readonly onDidChangeTreeData: vscode.Event<Issue | undefined> = this._onDidChangeTreeData.event;
+    readonly onDidChangeTreeData: vscode.Event<Issue | undefined | null | void> = this._onDidChangeTreeData.event;
 
     private state: string;
     private issueList: Issue[] = [];
