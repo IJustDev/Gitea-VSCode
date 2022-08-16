@@ -17,6 +17,8 @@ export class Issue extends TreeItem {
     public creator: string,
     public labels: Label[],
     public collapsibleState: TreeItemCollapsibleState,
+    public title: string,
+    public html_url: string,
     public command?: Command
   ) {
     super(label, collapsibleState);

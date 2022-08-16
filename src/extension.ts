@@ -1,12 +1,30 @@
 import * as vscode from 'vscode';
 
-import { showIssueHTML } from './template.html';
+import { showIssueHTML, showIssueMD } from './template.issues';
 import { Issue } from './issue';
 import { IssueProvider } from './issueProvider';
+import { Config } from './config';
+import MarkdownIt = require('markdown-it');
 
 export function showIssueInWebPanel(issue: Issue) {
-    const panel = vscode.window.createWebviewPanel('issue', issue.label, vscode.ViewColumn.Active, {});
-    panel.webview.html = showIssueHTML(issue);
+    const panel = vscode.window.createWebviewPanel(
+        'issue',
+        issue.label,
+        vscode.ViewColumn.Active,
+        {
+            enableScripts: true
+        }
+    );
+
+    const config = new Config();
+
+    if(config.render == 'html') {
+        panel.webview.html = showIssueHTML(issue);
+    } else {
+        let markdownIt = new MarkdownIt()
+        panel.webview.html = markdownIt.render(showIssueMD(issue));
+    }
+
     return panel;
 }
 

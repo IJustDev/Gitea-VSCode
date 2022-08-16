@@ -40,3 +40,23 @@ export function showIssueHTML(issue: Issue) {
     .replace('{{description}}', issue.body)
     .replace('{{label}}', issue.label);
 }
+
+
+export function showIssueMD(issue: Issue) {
+    return `# {{title}} (#{{id}})
+
+{{description}}
+
+---
+
+* State: {{state}}
+* Assignee: {{assignee}}
+* [See in browser]({{html_url}})
+    `
+    .replace('{{title}}', issue.title)
+    .replace('{{id}}', issue.issueId.toString())
+    .replace('{{description}}', issue.body)
+    .replace('{{state}}', issue.state)
+    .replace('{{assignee}}', issue.assignee)
+    .replace('{{html_url}}', issue.html_url)
+  }

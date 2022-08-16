@@ -109,6 +109,20 @@
                     "type": "boolean",
                     "default": true,
                     "description": "true=Stop when cannot verify SSL certificate, false=Continue any way. Like git config 'sslVerify'."
+                },
+                "gitea.render": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "markdown",
+                    "enum": [
+                        "markdown",
+                        "html"
+                    ],
+                    "enumDescriptions": [
+                        "Render Issue in markdown format",
+                        "Render Issue in html format"
+                    ],
+                    "description": "Choose render to show issues in editor"
                 }
             }
         }
@@ -125,11 +139,13 @@
         "@types/vscode": "^1.70.0",
         "@types/mocha": "^9.1.1",
         "@types/node": "16.x",
+        "@types/markdown-it": "^12.2.3",
         "eslint": "^8.20.0",
         "typescript": "^4.7.4"
     },
     "dependencies": {
-        "axios": "^0.27.2"
+        "axios": "^0.27.2",
+        "markdown-it": "^13.0.1"
     },
     "repository": {
         "type": "github",
