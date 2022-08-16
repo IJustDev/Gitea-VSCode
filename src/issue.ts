@@ -14,6 +14,7 @@ export class Issue extends TreeItem {
     public body: string,
     public state: string,
     public assignee: string,
+    public assignees: any[],
     public creator: string,
     public labels: Label[],
     public collapsibleState: TreeItemCollapsibleState,
@@ -24,7 +25,6 @@ export class Issue extends TreeItem {
     super(label, collapsibleState);
     this.tooltip = this.label + ' - ' + this.assignee;
   }
-
 
   labelDependentIcon(dark: boolean = false): Uri {
     if (this.labels.length === 0) {

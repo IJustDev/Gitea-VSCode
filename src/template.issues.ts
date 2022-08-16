@@ -43,7 +43,13 @@ export function showIssueHTML(issue: Issue) {
 
 
 export function showIssueMD(issue: Issue) {
-    return `# {{title}} (#{{id}})
+    let md_labels = issue.labels.map(label => {
+        return '![' + label.name + '](https://img.shields.io/badge/' + label.name + '-' + label.color + '.svg)'
+    }).join(', ')
+
+    let assignees = issue.assignees === null ? "Nobody" : issue.assignees.map(assignee => { return assignee.login }).join(', ');
+
+    let md =  `# {{title}} (#{{id}})
 
 {{description}}
 
@@ -51,12 +57,16 @@ export function showIssueMD(issue: Issue) {
 
 * State: {{state}}
 * Assignee: {{assignee}}
+* Labels: {{labels}}
 * [See in browser]({{html_url}})
     `
     .replace('{{title}}', issue.title)
     .replace('{{id}}', issue.issueId.toString())
     .replace('{{description}}', issue.body)
     .replace('{{state}}', issue.state)
-    .replace('{{assignee}}', issue.assignee)
+    .replace('{{assignee}}', assignees)
+    .replace('{{labels}}', md_labels)
     .replace('{{html_url}}', issue.html_url)
-  }
+
+    return md
+}
