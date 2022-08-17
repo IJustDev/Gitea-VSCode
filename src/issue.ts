@@ -8,6 +8,25 @@ interface Label {
 }
 
 export class Issue extends TreeItem {
+    contextValue = 'issue';
+    original_issue? : Issue;
+
+  static createIssue(element: Issue) {
+    let ret = new Issue(
+        element.label,
+        element.issueId,
+        element.body,
+        element.state,
+        element.assignee,
+        element.creator,
+        element.labels,
+        element.collapsibleState,
+        element.title,
+        element.html_url)
+    ret.original_issue = element;
+    return ret
+  }
+
   constructor(
     public readonly label: string,
     public issueId: number,
@@ -39,7 +58,6 @@ export class Issue extends TreeItem {
     dark: this.labelDependentIcon(true),
   };
 
-  contextValue = 'issue';
 }
 
 export function createIconWithColor(color: string): Uri {
