@@ -20,11 +20,9 @@ export class Issue extends TreeItem {
     public command?: Command
   ) {
     super(label, collapsibleState);
+    this.tooltip = this.label + ' - ' + this.assignee;
   }
 
-  get tooltip() {
-    return this.label + ' - ' + this.assignee;
-  }
 
   labelDependentIcon(dark: boolean = false): Uri {
     if (this.labels.length === 0) {
