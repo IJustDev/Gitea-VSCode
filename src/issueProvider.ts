@@ -33,7 +33,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
             issuesOfPage.forEach((c) => {
                 c.label = `#${c.number} - ${c.title}`;
                 c.issueId = c.number;
-                c.assignee = c.assignee === null ? 'Nobody' : c.assignee;
+                c.assignee = c.assignee === null ? 'Nobody' : c.assignee.login;
                 c.creator = c.user.login;
             });
             page++;
