@@ -18,6 +18,16 @@
     "main": "./out/extension.js",
     "icon": "resources/icon.png",
     "contributes": {
+        "viewsWelcome": [
+            {
+                "view": "giteaIssues.opened-issues",
+                "contents": "Refresh to get Gitea opened issues .\n[Refresh](command:giteaIssues.refreshIssues)"
+            },
+            {
+                "view": "giteaIssues.closed-issues",
+                "contents": "Refresh to get Gitea closed issues .\n[Refresh](command:giteaIssues.refreshIssues)"
+            }
+        ],
         "viewsContainers": {
             "activitybar": [
                 {
