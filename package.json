@@ -11,7 +11,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onView:open-issues",
+        "onView:giteaIssues.opened-issues",
         "onCommand:giteaIssues.initRepo",
         "onCommand:giteaIssues.refreshIssues"
     ],
@@ -21,20 +21,20 @@
         "viewsContainers": {
             "activitybar": [
                 {
-                    "id": "issue-explorer",
+                    "id": "giteaIssues",
                     "title": "Gitea-Issues",
                     "icon": "media/issue.svg"
                 }
             ]
         },
         "views": {
-            "issue-explorer": [
+            "giteaIssues": [
                 {
-                    "id": "open-issues",
+                    "id": "giteaIssues.opened-issues",
                     "name": "Open Issues"
                 },
                 {
-                    "id": "closed-issues",
+                    "id": "giteaIssues.closed-issues",
                     "name": "Closed Issues"
                 }
             ]
@@ -58,7 +58,7 @@
                 {
                     "command": "giteaIssues.refreshIssues",
                     "group": "navigation",
-                    "when": "view == open-issues"
+                    "when": "view == giteaIssues.opened-issues"
                 }
             ]
         },

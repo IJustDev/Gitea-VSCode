@@ -17,8 +17,8 @@ export function activate(context: vscode.ExtensionContext) {
     const openIssuesProvider = new IssueProvider("open");
     const closedIssuesProvider = new IssueProvider("closed");
 
-    vscode.window.registerTreeDataProvider('open-issues', openIssuesProvider);
-    vscode.window.registerTreeDataProvider('closed-issues', closedIssuesProvider);
+    vscode.window.registerTreeDataProvider('giteaIssues.opened-issues', openIssuesProvider);
+    vscode.window.registerTreeDataProvider('giteaIssues.closed-issues', closedIssuesProvider);
 
     vscode.commands.registerCommand('giteaIssues.openIssue', (issue: Issue) => {
         const issueOpenable = openIssues.find((c) => c.issueId === issue.issueId) === undefined;
