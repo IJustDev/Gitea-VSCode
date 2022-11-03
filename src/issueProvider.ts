@@ -3,11 +3,12 @@ import * as vscode from 'vscode';
 import { Issue } from './issue';
 import { Config } from './config';
 import { GiteaConnector } from './giteaConnector';
+import { Logger } from './logger';
 
 export class IssueProvider implements vscode.TreeDataProvider<Issue> {
-    private _onDidChangeTreeData: vscode.EventEmitter<Issue | undefined> = new vscode.EventEmitter<Issue | undefined>();
+    private _onDidChangeTreeData: vscode.EventEmitter<Issue | undefined | null | void> = new vscode.EventEmitter<Issue | undefined | null | void>();
 
-    readonly onDidChangeTreeData: vscode.Event<Issue | undefined> = this._onDidChangeTreeData.event;
+    readonly onDidChangeTreeData: vscode.Event<Issue | undefined | null | void> = this._onDidChangeTreeData.event;
 
     private state: string;
     private issueList: Issue[] = [];
@@ -26,18 +27,21 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
         const giteaConnector = new GiteaConnector(config.token, config.sslVerify);
 
         const issues = [];
-        let page = 0;
+        let page = 1;
         while (page < 11) {
+            Logger.log( `Retrieve issues. State: ${this.state} - page ${page}`);
             const issuesOfPage = (await giteaConnector.getIssues(config.repoApiUrl, this.state, page)).data;
+            Logger.log( `${issuesOfPage.length} issues retrieved (state: ${this.state} - page: ${page})`);
             issues.push(...issuesOfPage);
             issuesOfPage.forEach((c) => {
                 c.label = `#${c.number} - ${c.title}`;
                 c.issueId = c.number;
-                c.assignee = c.assignee === null ? 'Nobody' : c.assignee;
+                c.assignee = c.assignee === null ? 'Nobody' : c.assignee.login;
                 c.creator = c.user.login;
+                c.id = c.id.toString();
             });
             page++;
-            if (issues.length < 10) {
+            if (issuesOfPage.length < 10) {
                 break;
             }
         }
@@ -54,6 +58,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
             issue.collapsibleState = vscode.TreeItemCollapsibleState.Collapsed;
             issue.contextValue = 'issue';
             this.issueList.push(issue)
+            Logger.debug('Issue processed', { 'id': issue.issueId, 'state': issue.state })
         });
 
         return this.issueList

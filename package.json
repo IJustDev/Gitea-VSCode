@@ -5,7 +5,7 @@
     "publisher": "IJustDev",
     "version": "2.0.0",
     "engines": {
-        "vscode": "^1.32.0"
+        "vscode": "^1.70.0"
     },
     "categories": [
         "Other"
@@ -99,6 +99,12 @@
                     "type": "boolean",
                     "default": true,
                     "description": "true=Stop when cannot verify SSL certificate, false=Continue any way. Like git config 'sslVerify'."
+                },
+                "gitea.debug": {
+                    "scope": "window",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable debug mode. Need to reload window to apply"
                 }
             }
         }
@@ -107,19 +113,19 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {
-        "@types/axios": "^0.14.0",
-        "@types/mocha": "^2.2.42",
-        "@types/node": "^10.12.21",
-        "tslint": "^5.12.1",
-        "typescript": "^3.3.1",
-        "vscode": "^1.1.28"
+        "@types/vscode": "^1.70.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "eslint": "^8.20.0",
+        "typescript": "^4.7.4"
     },
     "dependencies": {
-        "axios": "^0.18.1"
+        "axios": "^0.27.2"
     },
     "repository": {
         "type": "github",
