@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { Issue } from './issue';
 import { Config } from './config';
 import { GiteaConnector } from './giteaConnector';
+import { Logger } from './logger';
 
 export class IssueProvider implements vscode.TreeDataProvider<Issue> {
     private _onDidChangeTreeData: vscode.EventEmitter<Issue | undefined | null | void> = new vscode.EventEmitter<Issue | undefined | null | void>();
@@ -28,7 +29,9 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
         const issues = [];
         let page = 1;
         while (page < 11) {
+            Logger.log( `Retrieve issues. State: ${this.state} - page ${page}`);
             const issuesOfPage = (await giteaConnector.getIssues(config.repoApiUrl, this.state, page)).data;
+            Logger.log( `${issuesOfPage.length} issues retrieved (state: ${this.state} - page: ${page})`);
             issues.push(...issuesOfPage);
             issuesOfPage.forEach((c) => {
                 c.label = `#${c.number} - ${c.title}`;
@@ -50,6 +53,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
                 arguments: [issue],
             };
             issue.collapsibleState = vscode.TreeItemCollapsibleState.Collapsed;
+            Logger.debug('Issue processed', { 'id': issue.issueId, 'state': issue.state })
         });
     }
 

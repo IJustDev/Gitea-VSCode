@@ -99,6 +99,12 @@
                     "type": "boolean",
                     "default": true,
                     "description": "true=Stop when cannot verify SSL certificate, false=Continue any way. Like git config 'sslVerify'."
+                },
+                "gitea.debug": {
+                    "scope": "window",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable debug mode. Need to reload window to apply"
                 }
             }
         }
