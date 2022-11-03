@@ -11,30 +11,40 @@
         "Other"
     ],
     "activationEvents": [
-        "onView:open-issues",
+        "onView:giteaIssues.opened-issues",
         "onCommand:giteaIssues.initRepo",
         "onCommand:giteaIssues.refreshIssues"
     ],
     "main": "./out/extension.js",
     "icon": "resources/icon.png",
     "contributes": {
+        "viewsWelcome": [
+            {
+                "view": "giteaIssues.opened-issues",
+                "contents": "Refresh to get Gitea opened issues .\n[Refresh](command:giteaIssues.refreshIssues)"
+            },
+            {
+                "view": "giteaIssues.closed-issues",
+                "contents": "Refresh to get Gitea closed issues .\n[Refresh](command:giteaIssues.refreshIssues)"
+            }
+        ],
         "viewsContainers": {
             "activitybar": [
                 {
-                    "id": "issue-explorer",
+                    "id": "giteaIssues",
                     "title": "Gitea-Issues",
                     "icon": "media/issue.svg"
                 }
             ]
         },
         "views": {
-            "issue-explorer": [
+            "giteaIssues": [
                 {
-                    "id": "open-issues",
+                    "id": "giteaIssues.opened-issues",
                     "name": "Open Issues"
                 },
                 {
-                    "id": "closed-issues",
+                    "id": "giteaIssues.closed-issues",
                     "name": "Closed Issues"
                 }
             ]
@@ -58,7 +68,7 @@
                 {
                     "command": "giteaIssues.refreshIssues",
                     "group": "navigation",
-                    "when": "view == open-issues"
+                    "when": "view == giteaIssues.opened-issues"
                 }
             ]
         },
@@ -100,6 +110,21 @@
                     "default": true,
                     "description": "true=Stop when cannot verify SSL certificate, false=Continue any way. Like git config 'sslVerify'."
                 },
+
+                "gitea.render": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "markdown",
+                    "enum": [
+                        "markdown",
+                        "html"
+                    ],
+                    "enumDescriptions": [
+                        "Render Issue in markdown format",
+                        "Render Issue in html format"
+                    ],
+                    "description": "Choose render to show issues in editor"
+                }, 
                 "gitea.debug": {
                     "scope": "window",
                     "type": "boolean",
@@ -121,11 +146,13 @@
         "@types/vscode": "^1.70.0",
         "@types/mocha": "^9.1.1",
         "@types/node": "16.x",
+        "@types/markdown-it": "^12.2.3",
         "eslint": "^8.20.0",
         "typescript": "^4.7.4"
     },
     "dependencies": {
-        "axios": "^0.27.2"
+        "axios": "^0.27.2",
+        "markdown-it": "^13.0.1"
     },
     "repository": {
         "type": "github",

@@ -1,13 +1,31 @@
 import * as vscode from 'vscode';
 
-import { showIssueHTML } from './template.html';
+import { showIssueHTML, showIssueMD } from './template.issues';
 import { Issue } from './issue';
 import { IssueProvider } from './issueProvider';
+import { Config } from './config';
+import MarkdownIt = require('markdown-it');
 import { Logger } from './logger';
 
 export function showIssueInWebPanel(issue: Issue) {
-    const panel = vscode.window.createWebviewPanel('issue', issue.label, vscode.ViewColumn.Active, {});
-    panel.webview.html = showIssueHTML(issue);
+    const panel = vscode.window.createWebviewPanel(
+        'issue',
+        issue.label,
+        vscode.ViewColumn.Active,
+        {
+            enableScripts: true
+        }
+    );
+
+    const config = new Config();
+
+    if(config.render == 'html') {
+        panel.webview.html = showIssueHTML(issue);
+    } else {
+        let markdownIt = new MarkdownIt()
+        panel.webview.html = markdownIt.render(showIssueMD(issue));
+    }
+
     return panel;
 }
 
@@ -21,8 +39,8 @@ export function activate(context: vscode.ExtensionContext) {
     const openIssuesProvider = new IssueProvider("open");
     const closedIssuesProvider = new IssueProvider("closed");
 
-    vscode.window.registerTreeDataProvider('open-issues', openIssuesProvider);
-    vscode.window.registerTreeDataProvider('closed-issues', closedIssuesProvider);
+    vscode.window.registerTreeDataProvider('giteaIssues.opened-issues', openIssuesProvider);
+    vscode.window.registerTreeDataProvider('giteaIssues.closed-issues', closedIssuesProvider);
 
     vscode.commands.registerCommand('giteaIssues.openIssue', (issue: Issue) => {
         const issueOpenable = openIssues.find((c) => c.issueId === issue.issueId) === undefined;
