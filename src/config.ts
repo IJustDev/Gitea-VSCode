@@ -100,6 +100,7 @@ export class Config implements ConfigTypes {
 
     public set render(value) {
         this.storage.update('render', value)
+    }
 
     public set debug(value) {
         this.storage.update('debug', value)

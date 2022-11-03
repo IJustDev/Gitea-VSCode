@@ -18,6 +18,7 @@ export class Issue extends TreeItem {
         element.body,
         element.state,
         element.assignee,
+        element.assignees,
         element.creator,
         element.labels,
         element.collapsibleState,
