@@ -8,6 +8,7 @@ interface ConfigStorage {
     sslVerify: boolean;
     baseURL: string;
     render: string;
+    debug: boolean;
 }
 
 export interface ConfigTypes extends ConfigStorage {
@@ -92,11 +93,19 @@ export class Config implements ConfigTypes {
         return this.loadConfigValue('sslVerify', 'boolean');
     }
 
+
     public get render() {
         return this.loadConfigValue('render', 'string')
     }
 
     public set render(value) {
         this.storage.update('render', value)
+
+    public set debug(value) {
+        this.storage.update('debug', value)
+    }
+
+    public get debug(): boolean {
+        return this.loadConfigValue('debug', 'boolean');
     }
 }

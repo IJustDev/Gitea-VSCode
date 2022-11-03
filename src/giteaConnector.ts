@@ -3,6 +3,7 @@ import * as https from 'https';
 import axios from 'axios';
 
 import { IGiteaResponse } from './IGiteaResponse';
+import { Logger } from './logger';
 
 export class GiteaConnector {
     private authToken: string;
@@ -18,11 +19,14 @@ export class GiteaConnector {
     }
 
     private async getEndpoint(url: string): Promise<IGiteaResponse> {
+        Logger.debug('getEndpoint', 'request', {'url': url})
         return new Promise<IGiteaResponse>((resolve, reject) => {
             return axios.get(url, this.requestOptions).then((data) => {
                 resolve(data);
+                Logger.debug('getEndpoint', 'response', {'url': url, 'status': data.status, 'size': data.data.length})
             }).catch((err) => {
                 this.displayErrorMessage(err);
+                Logger.log(err)
                 reject(err);
             });
         });
@@ -42,7 +46,7 @@ export class GiteaConnector {
             headers: {Authorization: 'token ' + this.authToken},
             httpsAgent: agent,
         };
-    } 
+    }
 
     private displayErrorMessage(err: string) {
         vscode.window.showErrorMessage("Error occoured. " + err);

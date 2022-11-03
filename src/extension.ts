@@ -5,6 +5,7 @@ import { Issue } from './issue';
 import { IssueProvider } from './issueProvider';
 import { Config } from './config';
 import MarkdownIt = require('markdown-it');
+import { Logger } from './logger';
 
 export function showIssueInWebPanel(issue: Issue) {
     const panel = vscode.window.createWebviewPanel(
@@ -29,6 +30,9 @@ export function showIssueInWebPanel(issue: Issue) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+    Logger.init()
+    Logger.log('Starting Gitea ...');
+
     // Array of issues; This is used to determine whether a issue is already open
     // in a tab or not.
     let openIssues: Array<Issue> = [];
@@ -54,6 +58,8 @@ export function activate(context: vscode.ExtensionContext) {
         openIssuesProvider.refresh();
         closedIssuesProvider.refresh();
     });
+
+    Logger.log('Gitea is ready')
 }
 
 export function deactivate() {}

@@ -110,6 +110,7 @@
                     "default": true,
                     "description": "true=Stop when cannot verify SSL certificate, false=Continue any way. Like git config 'sslVerify'."
                 },
+
                 "gitea.render": {
                     "scope": "resource",
                     "type": "string",
@@ -123,6 +124,12 @@
                         "Render Issue in html format"
                     ],
                     "description": "Choose render to show issues in editor"
+                }, 
+                "gitea.debug": {
+                    "scope": "window",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable debug mode. Need to reload window to apply"
                 }
             }
         }
