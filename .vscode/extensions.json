@@ -2,6 +2,8 @@
 	// See http://go.microsoft.com/fwlink/?LinkId=827846
 	// for the documentation about the extensions.json format
 	"recommendations": [
-		"ms-vscode.vscode-typescript-tslint-plugin"
+        "yzhang.markdown-all-in-one",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next"
 	]
 }
