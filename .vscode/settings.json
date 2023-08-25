@@ -10,5 +10,5 @@
     "typescript.tsc.autoDetect": "off",
     "editor.detectIndentation": false,
     "prettier.tabWidth": 2,
-    "prettier.singleQuote": true
+	"prettier.singleQuote": true
 }
