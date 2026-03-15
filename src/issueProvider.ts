@@ -30,7 +30,7 @@ export class IssueProvider implements vscode.TreeDataProvider<Issue> {
         let page = 1;
         while (page < 11) {
             Logger.log( `Retrieve issues. State: ${this.state} - page ${page}`);
-            const issuesOfPage = (await giteaConnector.getIssues(config.repoApiUrl, this.state, page)).data;
+            const issuesOfPage = (await giteaConnector.getIssues(config.havingCertificateIssueOnLocalServer ? config.endPointPath : config.repoApiUrl, this.state, page)).data;
             Logger.log( `${issuesOfPage.length} issues retrieved (state: ${this.state} - page: ${page})`);
             issues.push(...issuesOfPage);
             issuesOfPage.forEach((c) => {

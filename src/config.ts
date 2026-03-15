@@ -3,6 +3,9 @@ import { workspace, window } from 'vscode';
 interface ConfigStorage {
     token: string;
     instanceURL: string;
+    havingCertificateIssueOnLocalServer: boolean;
+    host: string;
+    port: number;
     owner: string;
     repo: string;
     sslVerify: boolean;
@@ -13,6 +16,7 @@ interface ConfigStorage {
 
 export interface ConfigTypes extends ConfigStorage {
     readonly repoApiUrl: string;
+    readonly endPointPath: string;
 }
 
 export class Config implements ConfigTypes {
@@ -50,8 +54,24 @@ export class Config implements ConfigTypes {
         this.storage.update('instanceURL', value);
     }
 
+    public set host(value: string) {
+        this.storage.update('host', value);
+    }
+
+    public set port(value: number) {
+        this.storage.update('port', value);
+    }
+
     public get instanceURL(): any {
         return this.loadConfigValue('instanceURL', 'string');
+    }
+
+    public get host(): any {
+        return this.loadConfigValue('host', 'string');
+    }
+
+    public get port(): any {
+        return this.loadConfigValue('port', 'number');
     }
 
     public get baseURL(): string {
@@ -83,6 +103,20 @@ export class Config implements ConfigTypes {
             '/api/v1/repos/' +
             this.owner +
             '/' + this.repo + '/issues';
+    }
+
+    public get endPointPath(): string {
+        return '/api/v1/repos/' +
+            this.owner +
+            '/' + this.repo + '/issues';
+    }
+    
+    public set havingCertificateIssueOnLocalServer(value) {
+        this.storage.update('havingCertificateIssueOnLocalServer', value);
+    }
+    
+    public get havingCertificateIssueOnLocalServer() {
+        return this.loadConfigValue('havingCertificateIssueOnLocalServer', 'boolean');
     }
 
     public set sslVerify(value) {

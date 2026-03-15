@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { IGiteaResponse } from './IGiteaResponse';
 import { Logger } from './logger';
+import { Config } from './config';
 
 export class GiteaConnector {
     private authToken: string;
@@ -15,9 +16,13 @@ export class GiteaConnector {
     }
 
     public async getIssues(repoUri: string, state: string, page: number = 0): Promise<IGiteaResponse> {
-        return this.getEndpoint(`${repoUri}?state=${state}&page=${page}`);
+        const config = new Config();
+        return config.havingCertificateIssueOnLocalServer ?
+        this.getEndpoint2(`${repoUri}?state=${state}&page=${page}`):
+        this.getEndpoint(`${repoUri}?state=${state}&page=${page}`);
     }
 
+    /// Using AXIOS
     private async getEndpoint(url: string): Promise<IGiteaResponse> {
         Logger.debug('getEndpoint', 'request', {'url': url})
         return new Promise<IGiteaResponse>((resolve, reject) => {
@@ -29,6 +34,35 @@ export class GiteaConnector {
                 Logger.log(err)
                 reject(err);
             });
+        });
+    }
+
+    /// Using https library because of self-signed certificates issue  in axios, this issue was occurring  when using axios with local gitea server running on docker
+    private async getEndpoint2(endPointPath: string): Promise<IGiteaResponse> {
+        const config = new Config();
+        Logger.debug('getEndpoint', 'request', { 'url': endPointPath });
+
+        return new Promise<IGiteaResponse>(async (resolve, reject) => {
+            const responseData: Buffer[] = []; // Initialize as an empty array
+
+            const req = https.request(this.requestOptions2(endPointPath), (res) => {
+                res.on('data', (chunk) => {
+                    responseData.push(chunk); // Push each chunk to the array
+                });
+
+                res.on('end', () => {
+                    const responseDataString = Buffer.concat(responseData).toString(); // Join chunks into a single string
+                    const response: IGiteaResponse = { data: JSON.parse(responseDataString) }; // Parse the JSON data
+                    resolve(response);
+                    Logger.debug('getEndpoint', 'response', { 'url': config.host+ ':' + config.port + endPointPath, 'status': res.statusCode,'size': response.data.length });
+                });
+            }).on('error', (err) => {
+                this.displayErrorMessage(err.message);
+                Logger.log(err.message);
+                reject(err);
+            });
+
+            req.end();
         });
     }
 
@@ -48,6 +82,22 @@ export class GiteaConnector {
         };
     }
 
+    /// Returns alternative request options for [getEndpoint2] method written above
+    private requestOptions2(endPointPath:string): object {
+        const config = new Config();
+        return {
+            method: 'GET',
+            hostname: config.host,
+            port: config.port,
+            path: endPointPath,
+            
+            rejectUnauthorized: this.ssl,
+            headers: {
+                Authorization: 'token ' + this.authToken,
+                Accept: 'application/json;charset=utf-8'
+            },
+        };
+    }
     private displayErrorMessage(err: string) {
         vscode.window.showErrorMessage("Error occoured. " + err);
     }

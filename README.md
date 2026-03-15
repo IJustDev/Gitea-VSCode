@@ -41,6 +41,15 @@ Otherwise do not push the .vscode folder to your repository and doublecheck this
     , "gitea.owner": "%OWNER%"
     , "gitea.repo": "%REPO_NAME%"
 ```
+- If your Gitea instance is on local network server then there are chances of Error 401 or 400 due to ssl/tls certificate issue is not being able to handled by the default Axios library method. In that case use following instead of above snippet.
+```
+    , "gitea.havingCertificateIssueOnLocalServer": true
+    , "gitea.host": %YOUR_GITEA_HOST% // Example: "192.168.0.99" (with quotes, without http or https)
+    , "gitea.port": %YOUR_GITEA_EXPOSED_PORT% // Gitea Remote Exposed Port. Example: 3100 (without quotes)
+    , "gitea.owner": "%OWNER%"
+    , "gitea.repo": "%REPO_NAME%"
+    , "gitea.sslVerify": false
+```
 
 ### The following details are needed
 
