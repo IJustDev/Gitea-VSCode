@@ -151,7 +151,7 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
-        "axios": "^1.13.6",
+        "axios": "^1.15.2",
         "markdown-it": "^14.1.1"
     },
     "repository": {
